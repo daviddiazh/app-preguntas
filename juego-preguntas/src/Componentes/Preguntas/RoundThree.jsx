@@ -11,7 +11,7 @@ export function RoundThree(){
                 <div className="row">
                     <div className="col">
                         <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
-                            <form action=""  className="row g-3 needs-validation" novalidate>
+                            <form className="row g-3 needs-validation" novalidate>
                                 <h2>Ronda 3 - Desarrollo Web Front-end</h2>
                                 <div className={styles.preguntas}>
                                     <label dataCategoria="round3" htmlFor="wp-p3">¿Es React JS una Librería o Framework?</label>
