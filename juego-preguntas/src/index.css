@@ -1,0 +1,8 @@
+select{
+    display:flex;
+    padding: 7px 0;
+    border-radius: 10px;
+}
+label{
+    padding: 40px 0;
+}
