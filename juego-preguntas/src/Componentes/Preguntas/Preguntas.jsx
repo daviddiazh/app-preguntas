@@ -11,26 +11,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { db } from "../../database";
 
 
-
-
 export function Preguntas(){
 
     const initialStateValues = {
         question: '',
         id: '',
-        category: 'test',
+        category: '',
         respond1: '',
         respond2: '',
         respond3: '',
-        respond4: '',
-        // guardar_categoria: ''
+        respond4: ''
     }
+
+    const docs = [];
+    
 
     const [values, setValues] = useState(initialStateValues);
 
     const getQuestion = async () => {
         await db.collection("question").onSnapshot((querySnapshot) => {
-          const docs = [];
           querySnapshot.forEach((doc) => {
             docs.push({ ...doc.data(), id: doc.id });
           });
@@ -46,25 +45,16 @@ export function Preguntas(){
     return(
         <>
             <div className={styles.round1}>
-                <RoundOne />
+                {/* <select>
+                    {
+                    docs.map(el => <option value={el} key={el}> {el} </option>)
+                    }
+                </select> */}
+                {
+                    docs.map(p => <h1>{p.question}</h1> )
+                }
             </div>
 
-            <div className={styles.round2}>
-                <RoundTwo />
-            </div>
-
-
-            <div className={styles.round3}>
-                <RoundThree />
-            </div>
-
-            <div className={styles.round4}>
-                <RoundFour />
-            </div>
-
-            <div className={styles.round5}>
-                <RoundFive />
-            </div>
             
         </>
     )

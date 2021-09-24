@@ -11,7 +11,7 @@ export function RoundFive(){
                 <div className="row">
                     <div className="col">
                         <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
-                            <form  className="row g-3 needs-validation" novalidate>
+                            <form  className="row g-3 needs-validation" >
                                 <h2>Ronda 5 - Comandos en Terminal</h2>
                                 <div className={styles.preguntas}>
                                     <label  htmlFor="wp-p5">¿Con cual de los siguientes comandos miro la ubicación actual de directorios?</label>
