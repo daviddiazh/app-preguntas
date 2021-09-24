@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-// import { toast } from "react-toastify";
-import { db } from "../database"
+import { toast } from "react-toastify";
+import { db } from "../../database"
 
 
 const Admin = () =>{
@@ -8,7 +8,7 @@ const Admin = () =>{
     const initialStateValues = {
         question: '',
         id: '',
-        category: '',
+        category: 'test',
         respond1: '',
         respond2: '',
         respond3: '',
@@ -18,6 +18,8 @@ const Admin = () =>{
 
     const [values, setValues] = useState(initialStateValues);
 
+    
+
     function handleOptionChange(e){
         const { name, value } = e.target;
         setValues({...values, [name]: value})
@@ -25,29 +27,24 @@ const Admin = () =>{
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values)
         try {
-            if ( values.id === "") {
+            if ( !values.id) {
+                console.log(db);
               await db.collection("question").doc().set(values);
-            //   toast("New Question Add", {
-            //     type: "success",
-            //   });
+              toast("New Question Add", {
+                type: "success",
+              });
             } else {
               await db.collection("question").doc(values.id).update(values);
-            //   toast("Question Updated Successfully", {
-            //     type: "info",
-            //   });
+              toast("Question Updated Successfully", {
+                type: "info",
+              });
             }
           } catch (error) {
             console.error(error);
           }
     }
 
-    // const addTask = () => {
-    //     console.log("new task");
-    // }
-
-    // addOrEdit={addTask}
     return(
         <>
             <div className="container">

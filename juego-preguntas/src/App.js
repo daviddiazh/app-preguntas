@@ -5,7 +5,7 @@ import './App.css';
 import { Preguntas } from './Componentes/Preguntas/Preguntas';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  Admin  from './Componentes/Admin';
+import  Admin  from './Componentes/Admin/Admin';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
