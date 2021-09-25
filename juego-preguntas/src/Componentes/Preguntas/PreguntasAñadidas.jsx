@@ -4,21 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { db } from "../../database";
 
 
-export function Preguntas() {
+export function PreguntasAñadidas() {
 
     const initialStateRespuesta = {
         id: '',
-        pregunta: '',
-        respuesta_correcta: '',
-        true: ''
+        respuesta_correcta: ''
     }
 
     const [respuesta, setRespuesta] = useState(initialStateRespuesta);
 
 
-    function handleOptionChangeRespuesta(e) {
+    function handleOptionChangeRespuesta(e){
         const { name, value } = e.target;
-        setRespuesta({ ...respuesta, [name]: value })
+        setRespuesta({...respuesta, [name]: value})
     }
 
     const handleSubmitRespuesta = async (e) => {
@@ -29,7 +27,10 @@ export function Preguntas() {
 
     const [questions, setQuestions] = useState([]);
     const docs = [];
-    var docsF = [];
+
+    
+    
+
 
 
     const getQuestion = async () => {
@@ -37,14 +38,12 @@ export function Preguntas() {
             querySnapshot.forEach((doc) => {
                 docs.push({ ...doc.data(), id: doc.id });
             });
-
-            docsF = docs.filter(x => x.category === 'Wordpress')
-            setQuestions(docsF);
+            setQuestions(docs);
         });
     };
 
     useEffect(() => {
-        getQuestion();
+        getQuestion(); 
     }, []);
 
 
@@ -52,13 +51,13 @@ export function Preguntas() {
         <>
             <div className="container">
                 <div className="row">
-                    <h2>En está sección puedes encontrar las preguntas por Rondas / Categorías</h2>
+                    <h2>En está sección puedes encontrar todas las preguntas por Rondas / Categorías</h2>
                     {questions.map((question) => (
                         <div key={question.id} className="">
                             <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
                                 <form className="row g-3 needs-validation" onSubmit={handleSubmitRespuesta} >
                                     <h4>{question.question}</h4>
-                                    <option>Ronda {question.id} / Categoría:  {question.category}</option>
+                                    <option>Ronda/Categoría:  {question.category} - Pregunta Añadida</option>
                                     <select name="respuesta_correcta" id="" value={respuesta.respuesta_correcta} onChange={handleOptionChangeRespuesta}>
                                         <option>{question.respond}</option>
                                         <option value={respuesta.respond1}>{question.respond1}</option>
@@ -66,9 +65,9 @@ export function Preguntas() {
                                         <option value={respuesta.respond3}>{question.respond3}</option>
                                         <option value={respuesta.respond4}>{question.respond4}</option>
                                     </select>
+                                    
                                     <button type="submit" className="btn btn-primary fw-bold">Enviar</button>
                                 </form>
-                                <button className="btn btn-danger mt-5 ">Perdiste el juego</button>
                             </div>
                         </div>
                     ))}

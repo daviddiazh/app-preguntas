@@ -3,6 +3,7 @@ import './App.css';
 
 import  Admin  from './Componentes/Admin/Admin';
 import { Preguntas } from './Componentes/Preguntas/Preguntas';
+import { PreguntasAñadidas } from './Componentes/Preguntas/PreguntasAñadidas';
 import  Footer  from './Componentes/Footer/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +20,9 @@ function App() {
             <Link to="/"className="btn btn-primary">
               Admin
             </Link>
+            <Link to="/preguntas-añadidas"className="btn btn-primary">
+              Preguntas Añadidas
+            </Link>
             <Link to="/preguntas"className="btn btn-primary">
               Preguntas
             </Link>
@@ -30,6 +34,9 @@ function App() {
           <div className="btn-group">
           </div>
           <Switch>
+            <Route path="/preguntas-añadidas">
+                <PreguntasAñadidas />
+            </Route>
             <Route path="/preguntas">
                 <Preguntas />
             </Route>
