@@ -9,6 +9,7 @@ const initialStateValues = {
         question: '',
         id: '',
         category: '',
+        respond: '',
         respond1: '',
         respond2: '',
         respond3: '',
@@ -51,8 +52,9 @@ const initialStateValues = {
                     <div className="col">
                         <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
                             <form onSubmit={handleSubmit}  className="row g-3 needs-validation" novalidate>
+                                <h2>En esta sección podrás agregar nuevas preguntas.</h2>
                                 <select onChange={handleOptionChange} name="category" value={values.category} id="categoria">
-                                    <option value="">Seleccionar...</option>
+                                    <option value="">Seleccionar categoría</option>
                                     <option value="ronda1">Ronda1</option>
                                     <option value="ronda2">Ronda2</option>
                                     <option value="ronda3">Ronda3</option>
@@ -65,8 +67,8 @@ const initialStateValues = {
                                 <input onChange={handleOptionChange}  type="text" name="respond2" value={values.respond2} placeholder="Ingrese aquí la respuesta 2."/>
                                 <input onChange={handleOptionChange}  type="text" name="respond3" value={values.respond3} placeholder="Ingrese aquí la respuesta 3."/>
                                 <input onChange={handleOptionChange}  type="text" name="respond4" values={values.respond4} placeholder="Ingrese aquí la respuesta 4."/>
-                                <input onChange={handleOptionChange}  type="text" name="respond_correct" value={values.respond_correct} placeholder="Ingrese aquí el número de la respuesta correcta. Ej: respuesta1"></input>
-                                <button type="submit" className="btn btn-warning 
+                                <input onChange={handleOptionChange}  type="text" name="respond_correct" value={values.respond_correct} placeholder="Ingrese aquí el número de la respuesta correcta. Ej: 1"></input>
+                                <button type="submit" className="btn btn-primary 
                                 fw-bold">Enviar</button>
                             </form>
                         </div>

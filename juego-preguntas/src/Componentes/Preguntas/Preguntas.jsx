@@ -1,61 +1,56 @@
-import React, {useEffect, useState} from "react";
-import styles from './Preguntas.module.css';
-
-import { RoundOne } from "./RoundOne";
-import { RoundTwo } from "./RoundTwo";
-import { RoundThree } from "./RoundThree";
-import { RoundFour } from "./RoundFour";
-import { RoundFive } from "./RoundFive";
+import React, { useEffect, useState } from "react";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { db } from "../../database";
 
 
-export function Preguntas(){
+export function Preguntas() {
 
-    const initialStateValues = {
-        question: '',
-        id: '',
-        category: '',
-        respond1: '',
-        respond2: '',
-        respond3: '',
-        respond4: ''
-    }
-
+    const [questions, setQuestions] = useState([]);
     const docs = [];
-    
 
-    const [values, setValues] = useState(initialStateValues);
+
 
     const getQuestion = async () => {
         await db.collection("question").onSnapshot((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            docs.push({ ...doc.data(), id: doc.id });
-          });
-          setValues(docs);
-         console.log(docs);
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id });
+            });
+            setQuestions(docs);
         });
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         getQuestion();
-      }, []);
+    }, []);
 
-    return(
+
+
+    return (
         <>
-            <div className={styles.round1}>
-                {/* <select>
-                    {
-                    docs.map(el => <option value={el} key={el}> {el} </option>)
-                    }
-                </select> */}
-                {
-                    docs.map(p => <h1>{p.question}</h1> )
-                }
+            <div className="container">
+                <div className="row">
+                    {questions.map((question) => (
+                        <div key={question.id} className="">
+                            <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
+                                <form className="row g-3 needs-validation" >
+                                    <h4>{question.question}</h4>
+                                    <option>Ronda/Categoría -  {question.category}</option>
+                                    <select name="" id="">
+                                        <option>{question.respond}</option>
+                                        <option>{question.respond1}</option>
+                                        <option>{question.respond2}</option>
+                                        <option>{question.respond3}</option>
+                                        <option>{question.respond4}</option>
+                                    </select>
+                                    
+                                    <button type="submit" className="btn btn-primary fw-bold">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-
-            
         </>
     )
 }
