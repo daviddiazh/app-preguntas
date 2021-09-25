@@ -6,6 +6,25 @@ import { db } from "../../database";
 
 export function Preguntas() {
 
+    const initialStateRespuesta = {
+        id: '',
+        respuesta_correcta: ''
+    }
+
+    const [respuesta, setRespuesta] = useState(initialStateRespuesta);
+
+
+    function handleOptionChangeRespuesta(e){
+        const { name, value } = e.target;
+        setRespuesta({...respuesta, [name]: value})
+    }
+
+    const handleSubmitRespuesta = async (e) => {
+        e.preventDefault();
+        console.log(respuesta);
+    }
+
+
     const [questions, setQuestions] = useState([]);
     const docs = [];
 
@@ -33,15 +52,15 @@ export function Preguntas() {
                     {questions.map((question) => (
                         <div key={question.id} className="">
                             <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
-                                <form className="row g-3 needs-validation" >
+                                <form className="row g-3 needs-validation" onSubmit={handleSubmitRespuesta} >
                                     <h4>{question.question}</h4>
                                     <option>Ronda/Categoría -  {question.category}</option>
-                                    <select name="" id="">
+                                    <select name="respuesta_correcta" id="" value={respuesta.respuesta_correcta} onChange={handleOptionChangeRespuesta}>
                                         <option>{question.respond}</option>
-                                        <option>{question.respond1}</option>
-                                        <option>{question.respond2}</option>
-                                        <option>{question.respond3}</option>
-                                        <option>{question.respond4}</option>
+                                        <option value={respuesta.respond1}>{question.respond1}</option>
+                                        <option value={respuesta.respond2}>{question.respond2}</option>
+                                        <option value={respuesta.respond3}>{question.respond3}</option>
+                                        <option value={respuesta.respond4}>{question.respond4}</option>
                                     </select>
                                     
                                     <button type="submit" className="btn btn-primary fw-bold">Enviar</button>

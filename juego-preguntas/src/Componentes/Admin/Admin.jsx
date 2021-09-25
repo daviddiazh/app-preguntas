@@ -51,7 +51,7 @@ const initialStateValues = {
                 <div className="row">
                     <div className="col">
                         <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
-                            <form onSubmit={handleSubmit}  className="row g-3 needs-validation" novalidate>
+                            <form onSubmit={handleSubmit}  className="row g-3 needs-validation" >
                                 <h2>En esta sección podrás agregar nuevas preguntas.</h2>
                                 <select onChange={handleOptionChange} name="category" value={values.category} id="categoria">
                                     <option value="">Seleccionar categoría</option>
