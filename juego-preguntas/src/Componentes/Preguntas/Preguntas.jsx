@@ -53,6 +53,7 @@ export function Preguntas() {
             <div className="container">
                 <div className="row">
                     <h2>En está sección puedes encontrar las preguntas por Rondas / Categorías</h2>
+                    <p><strong>Nota:</strong> Para visualizar las Preguntas Añadidas, ve hasta el final de esta sección.</p>
                     {questions.map((question) => (
                         <div key={question.id} className="">
                             <div className="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
