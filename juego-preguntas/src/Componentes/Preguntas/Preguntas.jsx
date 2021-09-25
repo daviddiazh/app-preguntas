@@ -14,9 +14,9 @@ export function Preguntas() {
     const [respuesta, setRespuesta] = useState(initialStateRespuesta);
 
 
-    function handleOptionChangeRespuesta(e){
+    function handleOptionChangeRespuesta(e) {
         const { name, value } = e.target;
-        setRespuesta({...respuesta, [name]: value})
+        setRespuesta({ ...respuesta, [name]: value })
     }
 
     const handleSubmitRespuesta = async (e) => {
@@ -27,15 +27,7 @@ export function Preguntas() {
 
     const [questions, setQuestions] = useState([]);
     const docs = [];
-
-
-    //FILTER QUESTIONS
-    const docsF = docs;
-
-    const docsFilter = docsF.filter(x => x.questions.category === 'Wordpress')
-    console.log(docsFilter);
-
-
+    var docsF = [];
 
 
     const getQuestion = async () => {
@@ -43,12 +35,14 @@ export function Preguntas() {
             querySnapshot.forEach((doc) => {
                 docs.push({ ...doc.data(), id: doc.id });
             });
-            setQuestions(docs);
+
+            docsF = docs.filter(x => x.category === 'Wordpress')
+            setQuestions(docsF);
         });
     };
 
     useEffect(() => {
-        getQuestion(); 
+        getQuestion();
     }, []);
 
 
@@ -69,7 +63,7 @@ export function Preguntas() {
                                         <option value={respuesta.respond3}>{question.respond3}</option>
                                         <option value={respuesta.respond4}>{question.respond4}</option>
                                     </select>
-                                    
+
                                     <button type="submit" className="btn btn-primary fw-bold">Enviar</button>
                                 </form>
                             </div>
