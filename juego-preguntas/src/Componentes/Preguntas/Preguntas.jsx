@@ -29,6 +29,14 @@ export function Preguntas() {
     const docs = [];
 
 
+    //FILTER QUESTIONS
+    const docsF = docs;
+
+    const docsFilter = docsF.filter(x => x.questions.category === 'Wordpress')
+    console.log(docsFilter);
+
+
+
 
     const getQuestion = async () => {
         await db.collection("question").onSnapshot((querySnapshot) => {
@@ -40,9 +48,8 @@ export function Preguntas() {
     };
 
     useEffect(() => {
-        getQuestion();
+        getQuestion(); 
     }, []);
-
 
 
     return (
