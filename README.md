@@ -1,5 +1,5 @@
 # app-preguntas
-Este es un proyecto de practica en el cual utilice React JS y una base de datos Firebase
+Este es un proyecto de practica en el cual utilice React JS y una base de datos NO relacional de Firebase.
 
 Añadi una nueva funcionalidad donde podemos agregar nuevas preguntas desde la seccion 'Admin' y visualizarlas en la seccion de 'Preguntas Añadidas'.
 <img width="2560" alt="Captura de Pantalla 2021-09-25 a la(s) 2 45 58 p  m" src="https://user-images.githubusercontent.com/80727430/134784523-0e7ab41c-cd24-49c7-978e-5c222f916eaf.png"> 
